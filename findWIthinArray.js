@@ -9,4 +9,14 @@
 // var trueIfEven = function(value, index) { return (value % 2 === 0) };
 // findInArray([1,3,5,6,7], trueIfEven) // should === 3
 
-// My Solution:
+// My Solution: 
+
+function findInArray(array, iterator) {
+  
+      for (let i=0; i<array.length;i++){
+        if(iterator(array[i],i)) return i
+       
+      }
+  
+return -1
+};
