@@ -15,3 +15,26 @@
 // ["Fizz", "Fizz", "Fizz", "Fizz", "Fizz", "FizzBuzz"]  ==>  [1, 6
 
 // My Solution:
+
+function reverseFizzBuzz(array) {
+  // your code
+    let result= []
+  
+    for (let i=1; i<=array.length;i++){
+      if(array[i - 1] === 'FizzBuzz'){
+        result.push(i)
+        if(result.length ===1 && result[0] === 1 + array.indexOf('FizzBuzz')) result.push(array.indexOf('FizzBuzz') + 1)
+        if (result.length === 2) break
+      }else if(array[i - 1] === 'Fizz') {
+        if(result.length ===1 && result[0] === 1 + array.indexOf('Fizz')) continue
+        result.unshift(i)
+        if (result.length === 2) break
+      }
+      else if(array[i - 1] === 'Buzz') {
+        if(result.length ===1 && result[0] === 1 + array.indexOf('Buzz')) continue
+        result.push(i)
+        if (result.length === 2) break
+      } 
+    }
+  return result
+}
