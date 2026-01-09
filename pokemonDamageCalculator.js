@@ -38,3 +38,19 @@
 
 // My Solution:
 
+function calculateDamage(yourType, opponentType, attack, defense){
+  const chart = {
+    fire: { grass: 2, water: .5, fire: .5, electric: 1 },
+    water: { fire: 2, water: .5, electric: .5, grass: .5 },
+    grass: { water: 2, grass: .5, fire: .5, electric: 1 },
+    electric: { water: 2, electric: .5, fire: 1, grass: 1 }
+  }
+  
+  let effectiveness = 1
+
+  if (chart[yourType]) {
+    effectiveness = chart[yourType][opponentType] || 1
+  }
+  
+  return 50 * (attack / defense) * effectiveness
+}
