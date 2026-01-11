@@ -21,3 +21,18 @@
 
 // My Solution:
 
+function inArray(array1,array2){
+  //...
+  const result = []
+  
+  array2.forEach((x) => {
+    array1.forEach((y) => {
+      if(x.includes(y)){
+        if(!result.includes(y)) {
+          result.push(y)
+        }
+      }
+    })
+  })
+return result.sort()
+}
