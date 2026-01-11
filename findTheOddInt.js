@@ -11,3 +11,18 @@
 
 // My Solution
 
+function findOdd(A) {
+  let temp = {
+    
+  }
+  for (let i = 0; i<A.length;i++){
+    if(!temp[A[i]]){
+      temp[A[i]]=1
+    }
+    else temp[A[i]] += 1
+  }
+  let result = (Object.entries(temp).filter(([k, v]) => v % 2 !== 0))
+  
+  
+  return(+result[0][0]) //aaa
+}
