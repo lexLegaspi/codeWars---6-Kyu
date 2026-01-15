@@ -9,3 +9,17 @@
 
 // My Solution:
 
+function countdown (millisecs) {
+  // TODO ...
+  let abs = Math.abs(millisecs)
+  
+  let hour = Math.floor(abs / 3600000);
+  let minute = Math.floor((abs % 3600000) / 60000);
+  let seconds = Math.floor((abs % 60000) / 1000);
+  let result = (String(hour).padStart(2, '0') + ':' + String(minute).padStart(2, '0') + ':' + String(seconds).padStart(2,'0'))
+  
+  if(millisecs >= 0) {
+    return "+" + result
+  }
+  return "-" + result
+} 
