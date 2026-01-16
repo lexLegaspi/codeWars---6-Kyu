@@ -7,3 +7,13 @@
 
 // My Solution:
 
+function solution(str){
+   let arr = str.split('')
+   let result = []
+   
+   for (let i=0;i<arr.length;i+=2){
+     result.push(arr[i]+(arr[i+1] || '_'))
+   }
+
+  return result
+}
