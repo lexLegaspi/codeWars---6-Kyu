@@ -12,3 +12,15 @@
 
 // My Solution:
 
+var createIterator = function (func, n) {
+  // TODO: Write code here to return a function 
+  // that executes *func*, *n* times on a supplied input  
+  return function(num) {
+    let result = num
+    for(let i=0;i<n;i++){
+      result = func(result)
+    }
+    
+    return result
+  }
+};
