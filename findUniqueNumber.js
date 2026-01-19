@@ -35,3 +35,42 @@
 
 // My Solution:
 
+function findUnique(arr) {
+  let unique = undefined
+  let set1 = []
+  let set2 = []
+
+  function test() {
+    if (set1.length === 1 && set2.length === arr.length - 1) {
+      return set1[0]
+    }
+    if (set2.length === 1 && set1.length === arr.length - 1) {
+      return set2[0]
+    }
+    return undefined
+  }
+
+  arr.forEach(x => {
+    Number.isInteger(x) ? set1.push(x) : set2.push(x)
+  })
+  unique = test()
+  if (unique !== undefined) return unique
+  set1 = []
+  set2 = []
+
+  arr.forEach(x => {
+    x < 0 ? set1.push(x) : set2.push(x)
+  })
+  unique = test()
+  if (unique !== undefined) return unique
+  set1 = []
+  set2 = []
+
+  arr.forEach(x => {
+    x % 2 === 0 ? set1.push(x) : set2.push(x)
+  })
+  unique = test()
+  if (unique !== undefined) return unique
+
+  return arr.find(n => arr.indexOf(n) === arr.lastIndexOf(n))
+}
