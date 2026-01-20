@@ -21,3 +21,25 @@
 //   [ 'x', 'x', 'x', 'x', 'x' ] ]
 
 //   My Solution:
+
+function luckySevens(arr) {
+  let value=0
+  let count=0
+  for (let x=0;x<arr.length;x++){
+    for(let y=0;y<arr[x].length;y++) {
+      if(arr[x][y] == 7) {
+//         value = (arr[x - 1]?.[y] ?? 0) + (arr[x + 1]?.[y] ?? 0) + (arr[x]?.[y - 1] ?? 0) + (arr[x]?.[y + 1] ?? 0)
+        value =
+                (arr[x - 1] && arr[x - 1][y] !== undefined ? arr[x - 1][y] : 0) +
+                (arr[x + 1] && arr[x + 1][y] !== undefined ? arr[x + 1][y] : 0) +
+                (arr[x] && arr[x][y - 1] !== undefined ? arr[x][y - 1] : 0) +
+                (arr[x] && arr[x][y + 1] !== undefined ? arr[x][y + 1] : 0)
+
+        
+        let cuberoot = Math.cbrt(value)
+        if(Number.isInteger(cuberoot)&& value !== 0) count++
+      }
+    }
+  }
+  return count
+}
