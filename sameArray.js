@@ -13,3 +13,24 @@
 
 // My Solution:
 
+function same(aArr, bArr)
+{   let str1 = ''
+    let str2 = ''
+    
+    let set1 = aArr.map(x => {
+      return x.sort((a,b) => a-b)
+    })
+    
+    let set2 = bArr.map(x => {
+      return x.sort((a,b) => a-b)
+    })
+  set1.sort().forEach(x => {
+    x.forEach(y => str1 += y)
+  })
+ 
+  set2.sort().forEach(x => {
+    x.forEach(y => str2 += y)
+  })
+
+ return str1 == str2
+}
