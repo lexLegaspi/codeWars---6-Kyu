@@ -11,3 +11,24 @@
 
 // My Solution:
 
+function changer(str) { 
+  let vowel = 'aeiouAEIOU'
+  return str.split('').map(x => {
+    
+    if(isNaN(x)) {
+      if(x === 'z' || x==='Z'){
+        x = String.fromCharCode(65)
+      }else{
+        x = String.fromCharCode(x.charCodeAt(0) + 1)
+      }
+      
+      if(vowel.includes(x)){
+        x = x.toUpperCase()
+      }else{
+        x = x.toLowerCase()
+      }
+      
+    }
+    return x
+  }).join("")
+}
