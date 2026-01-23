@@ -46,3 +46,18 @@
 
 // My Solution:
 
+function ordinal(number, brief) {
+  // ...
+  let special= ['11', '12','13']
+  let numString = number.toString()
+  if (special.includes(numString.slice(numString.length - 2))) return 'th'
+  if (number == 0) return 'th'
+  if (number == 1 || numString[numString.length - 1] == '1') return 'st'
+  if (number == 2 || numString[numString.length - 1] == '2') {
+    return brief==true?'d':'nd'
+  }
+  if (number == 3 || numString[numString.length - 1] == '3') {
+    return brief==true?'d':'rd'
+  }
+    return 'th'
+}
