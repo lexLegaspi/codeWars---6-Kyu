@@ -8,3 +8,16 @@
 
 // My Solution:
 
+function findChildren(dancingBrigade) {
+    let temp = dancingBrigade.toLowerCase().split('').sort()
+    let result =''
+    
+    temp.forEach(x => {
+      if(!result.includes(x.toUpperCase())){
+        result += x.toUpperCase()
+      }else {
+        result += x
+      }
+    })
+    return result
+}
