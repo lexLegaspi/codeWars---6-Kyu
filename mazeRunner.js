@@ -34,3 +34,58 @@
 
 
 // My Solution:
+
+
+function mazeRunner(maze, directions) {
+    // Code here
+    let result = ''
+    let posX = 0
+    let posY = 0
+    for (let y = 0; y < maze.length; y++) {
+        for (let x = 0; x < maze[y].length; x++) {
+            if (maze[y][x] == 2) {
+                posX = x
+                posY = y
+            }
+        }
+    }
+
+    for (let i = 0; i < directions.length; i++) {
+        switch (directions[i]) {
+            case "N":
+                posY -= 1
+                break;
+            case "S":
+                posY += 1
+                break;
+            case "W":
+                posX -= 1
+                break;
+            case "E":
+                posX += 1
+                break;
+            default:
+                console.log(`error`);
+        }
+
+        if (
+            posY < 0 ||
+            posY >= maze.length ||
+            posX < 0 ||
+            posX >= maze[0].length
+        ) {
+            return "Dead"
+        }
+
+        result = check(maze[posY][posX])
+        if (result) {
+            return result
+        }
+    }
+    return 'Lost'
+}
+
+function check(value) {
+    if (value == 1 || value == undefined) return "Dead"
+    else if (value == 3) return "Finish"
+}
