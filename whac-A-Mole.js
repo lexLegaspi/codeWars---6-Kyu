@@ -110,3 +110,39 @@
 // Complete function whacAMole that accepts a argument arr, return the maximum number of moles you can hit.
 
 // My Soluion:
+
+function whacAMole(arr) {
+  let count = 0;
+
+  let flat = arr.reduce((acc, val) => acc.concat(val), []);
+  let seconds = Math.max.apply(null, flat);
+
+  for (let i = 0; i < seconds; i++) {
+    let roundHitCount = 0;
+
+    let alive = [];
+    for (let j = 0; j < flat.length; j++) {
+      if (flat[j] > 0) {
+        alive.push(j);
+      }
+    }
+
+    alive.sort(function (a, b) {
+      return flat[a] - flat[b];
+    });
+
+    for (let h = 0; h < alive.length && roundHitCount < 2; h++) {
+      flat[alive[h]] = 'x';
+      count++;
+      roundHitCount++;
+    }
+
+    for (let k = 0; k < flat.length; k++) {
+      if (flat[k] !== 'x' && flat[k] !== 0) {
+        flat[k] -= 1;
+      }
+    }
+  }
+
+  return count;
+}
