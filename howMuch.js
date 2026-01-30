@@ -31,3 +31,20 @@
 // See "Sample Tests" to know the format of the return.
 
 // My Solution:
+
+
+function howMuch(m, n) {
+    // your code
+  let max = Math.max(m,n)
+  let min = Math.min(m,n)
+  let result = []
+  for (let i = min; i<=max;i++){
+    let possible = []
+    if ((i%7) - 2 == 0 && (i%9) - 1 == 0) {
+      possible.push(`M: ${i}`, `B: ${Math.floor(i/7)}`, `C: ${Math.floor(i/9)}`)
+      result.push(possible)
+    }
+  }
+  console.log(m,n)
+  return result
+}
