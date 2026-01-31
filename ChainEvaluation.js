@@ -15,3 +15,23 @@
 // After you're done, one could chain these five methods to create chains of almost any length.
 
 // My Solution:
+
+Number.prototype.add = function(num) {
+  return this + num
+}
+
+Number.prototype.subtract = function(num) {
+  return this - num
+}
+
+Number.prototype.multiply = function(num) {
+  return this * num
+}
+
+Number.prototype.divide = function(num) {
+  return this / num
+}
+
+Number.prototype.square = function() {
+  return this**2
+}
