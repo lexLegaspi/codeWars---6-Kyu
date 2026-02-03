@@ -23,3 +23,18 @@
 
 // My Solution: 
 
+function countFeelings(string, array) {
+  //good luck
+  let result = 0
+  array.forEach( feelings => {
+    result ++
+    for (let i = 0; i<feelings.length; i++){
+      if(!string.includes(feelings[i])){
+        result--
+        break
+      }
+    }
+  })
+  
+  return result==1?`${result} feeling.`:`${result} feelings.`
+}
