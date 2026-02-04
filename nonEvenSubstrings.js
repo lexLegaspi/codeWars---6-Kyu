@@ -15,3 +15,14 @@
 // My Solution:
 
 
+function solve(s) {
+  let count = 0
+  
+  for (let j = 0; j < s.length; j++) {
+    if (Number(s[j]) % 2 !== 0) {
+      count += j + 1
+    }
+  }
+  
+  return count
+}
