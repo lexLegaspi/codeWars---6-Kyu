@@ -14,3 +14,18 @@
 
 // My Solution:
 
+function simplify(number){
+//You can do this!
+  
+  let stringNum = String(number)
+  let digit = `1` + '0'.repeat(stringNum.length - 1)
+  let result = ''
+  for (let i = 0; i < stringNum.length; i++) {
+    let digit = `1` + '0'.repeat(stringNum.length - 1 - i)
+    if(stringNum[i] > 0) {
+      result += `${stringNum[i]}*${digit}+`
+    }
+  }
+  
+  return number%10 == 0?result.slice(0,-1):result.slice(0,-3)
+}
