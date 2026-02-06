@@ -24,3 +24,30 @@
 // Good luck!
 
 // My Solution:
+
+function myCrib(n) {
+  let numOfFloors = n
+  let whiteSpace = ' '
+  let floorCeil = '_'
+  let result = ''
+    for (let i=0; i<=numOfFloors;i++) {
+      if(i == 0){
+        result += `${whiteSpace.repeat(numOfFloors - i)}/\\${whiteSpace.repeat(numOfFloors - i)}\n`
+      } else if(i == numOfFloors){
+        result += `${whiteSpace.repeat(numOfFloors - i)}/${floorCeil.repeat(i * 2)}\\${whiteSpace.repeat(numOfFloors - i)}\n`
+      }else{
+        result += `${whiteSpace.repeat(numOfFloors - i)}/${whiteSpace.repeat(i * 2)}\\${whiteSpace.repeat(numOfFloors - i)}\n`
+      }
+
+    }
+
+    for (let i=0; i<numOfFloors;i++) {
+      if(i == numOfFloors - 1){
+        result += `|${floorCeil.repeat(numOfFloors * 2)}|`
+      } else{
+        result += `|${whiteSpace.repeat(numOfFloors * 2)}|\n`
+      }
+    }
+  
+  return result
+}
