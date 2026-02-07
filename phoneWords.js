@@ -21,3 +21,51 @@
 
 // My Solution:
 
+function phoneWords(num) {
+ let keys = [
+  [' '], null,
+  ['a','b','c'],
+  ['d','e','f'],
+  ['g','h','i'],
+  ['j','k','l'],
+  ['m','n','o'],
+  ['p','q','r','s'],
+  ['t','u','v'],
+  ['w','x','y','z']]
+ 
+ let message = ''
+ let count = 1
+
+  for (let i = 0; i < num.length; i++) {
+
+    if (num[i] === '1') {
+      count = 1
+      continue
+    }
+
+    if (num[i] === num[i+1]) {
+      count++
+    } else {
+
+      let digit = Number(num[i])
+      let letters = keys[digit]
+
+      if (!letters) {
+        count = 1
+        continue
+      }
+
+      let fullCycles = Math.floor((count - 1) / letters.length)
+      let remainder = (count - 1) % letters.length
+
+      for (let c = 0; c < fullCycles; c++) {
+        message += letters[letters.length - 1]
+      }
+
+      message += letters[remainder]
+
+      count = 1
+    }
+  }
+  return message
+}
