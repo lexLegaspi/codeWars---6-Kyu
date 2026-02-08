@@ -15,3 +15,25 @@
 
 // My Solution:
 
+function grabscrab(anagram, dictionary) {
+    // Your code here
+    let result = []
+    for (let i = 0; i < dictionary.length; i++) {
+        if (dictionary[i].length != anagram.length) {
+            continue
+        } else {
+            let word = dictionary[i]
+            let tester = anagram.split('')
+
+            for (let j = 0; j < word.length; j++) {
+                if (tester.includes(word[j])) {
+                    tester[tester.indexOf(word[j])] = 'removed'
+                }
+            }
+            if (tester.every(x => x == "removed")) {
+                result.push(dictionary[i])
+            }
+        }
+    }
+    return result
+}
