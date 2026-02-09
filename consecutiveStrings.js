@@ -24,3 +24,17 @@
 
 // My Solution:
 
+function longestConsec(strarr, k) {
+    // your code
+  if(strarr.length == 0 || k > strarr.length || k <=0 )return ''
+  let result = ''
+  let longestChar = 0
+    for (let i=0; i<strarr.length; i++){
+      if(strarr[k] == undefined) break
+      if (strarr.slice(i, i+k).join('').length > longestChar){
+        longestChar = strarr.slice(i, i+k).join('').length
+        result = strarr.slice(i, i+k).join('')
+      }
+    }
+  return result
+}
