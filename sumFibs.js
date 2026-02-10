@@ -10,3 +10,21 @@
 
 // My Solution:
 
+function sumFibs(n) {
+	// you are the golden ratio.
+      let a = 0;
+      let b = 1;
+      let sum = 0;
+      let count = 0;
+
+      while (count <= n) {
+          if (a % 2 === 0) {
+              sum += a;
+          }
+
+          [a, b] = [b, a + b];
+          count++;
+      }
+
+    return sum;
+};
