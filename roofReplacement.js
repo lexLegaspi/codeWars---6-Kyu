@@ -10,3 +10,14 @@
 
 // My Solution:
 
+function roofFix(f, r){
+  
+  for (let i = 0; i < r.length; i++){
+    if((r[i] == '/' || r[i] == '\\')&& f[i] != ' '){
+      return false
+    }else{
+      continue
+    }
+  }
+  return true
+}
