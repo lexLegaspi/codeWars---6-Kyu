@@ -20,3 +20,43 @@
 
 // My Solution:
 
+function getColors(colArr) {
+  let result = []
+  let color = ['Red','Green','Blue']
+  
+  for (let i=0; i<colArr.length;i++){
+    let rCount = 0
+    let gCount = 0
+    let bCount = 0
+        
+    for (let j=0; j<colArr[i].length;j++){
+        
+      let red = parseInt(colArr[i][j].substring(0,2), 16)
+      let green = parseInt(colArr[i][j].substring(2,4), 16)
+      let blue = parseInt(colArr[i][j].substring(4,6), 16)
+               
+      if (red > green && red > blue) {
+        rCount++
+      } else if (green > red && green > blue) {
+        gCount++
+      } else {
+        bCount++
+      }
+    } 
+
+    let counter = [rCount,gCount,bCount]
+
+    let max = Math.max(...counter)
+    let dominant = color[counter.indexOf(max)]
+
+    // remove highest
+    let filtered = counter.filter(x => x !== max)
+
+    let secondMax = Math.max(...filtered)
+    let second = color[counter.indexOf(secondMax)]
+
+    result.push(dominant + '+' + second)
+  }
+
+  return result.join(',')
+}
