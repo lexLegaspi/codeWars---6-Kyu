@@ -42,3 +42,23 @@
 
 // My Solution:
 
+function a(n) {
+  //your code here
+    if (n < 4) return '';
+    if (n % 2 !== 0) n = n-1
+  
+    let line = n
+    let whiteSpace = ' '
+    let result = ''
+        for (let i=0; i<line;i++) {
+          if(i == (line/2)){
+            result += `${whiteSpace.repeat(line - i - 1)}A${' A'.repeat(i - 1)} A${whiteSpace.repeat(line - i - 1)}\n`
+          }else if(i == 0){
+            result += `${whiteSpace.repeat(line - i - 1)}A${whiteSpace.repeat(line - i -1 )}\n`
+          }else{
+            result += `${whiteSpace.repeat(line - i - 1)}A${whiteSpace.repeat(i * 2 - 1)}A${whiteSpace.repeat(line - i - 1)}\n`
+        }
+
+    }
+  return result.trimEnd()
+}
