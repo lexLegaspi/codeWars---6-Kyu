@@ -32,5 +32,21 @@
 
 // My Solution:
 
-
-
+function lengthOfRailway(sounds){
+  //Happy Coding ^_^
+  let distance = 0
+  let isFast = 0
+  
+  for(let i=0; i<sounds.length;i++){
+    if(sounds.slice(i, i+3) == '呜呜呜'){
+      isFast ^= 1
+      i+=2
+    }
+    if(sounds.slice(i, i+2) == '哐当'){
+      if(isFast) distance += 20
+      else distance += 10
+      i++
+    }
+  }
+  return distance
+}
