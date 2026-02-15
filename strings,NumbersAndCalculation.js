@@ -13,3 +13,29 @@
 
 // MY Solution:
 
+function calculateString(st){
+    //..
+  let clean = []
+  let temp = ''
+  for (let i=0;i<st.length;i++){
+    if(Number.isInteger(Number(st[i])) || st[i] == '.'){
+      temp += st[i]
+    }
+    
+    if(st[i] == '+' || st[i] == '-' || st[i] == '*' || st[i] == '/' ){ 
+      clean.push(Number(temp))
+      clean.push(st[i])
+      temp = ''
+    }
+  }
+  clean.push(Number(temp))
+  
+  function calculate(num1, num2, operator) {
+    if(operator == '+') return num1 + num2
+    else if (operator == '-') return num1 - num2
+    else if (operator == '*') return num1 * num2
+    else return num1/num2
+    }
+  
+  return Math.round(calculate(clean[0], clean[2], clean[1])).toString()
+}
