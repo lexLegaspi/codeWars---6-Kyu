@@ -10,3 +10,11 @@
 
 
 // My Solution:
+
+
+function flip(fn) {
+    //complete this function here
+   return function (...args){
+    return fn(...args.reverse())
+  }
+}
