@@ -10,3 +10,14 @@
 // My Solution:
 
 
+function deleteNth(arr,n){
+  // ...
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    let count = result.filter(x => x === arr[i]).length
+    if(count < n){
+      result.push(arr[i])
+    }
+  }
+  return result
+}
