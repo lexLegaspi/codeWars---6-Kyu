@@ -15,3 +15,29 @@
 
 // My Solution:
 
+function palindrome(num){ 
+  let result = []
+
+  if (!Number.isInteger(num) || num < 0) return "Not valid"
+  if (num < 10) return "No palindromes found"
+
+  let arr = num.toString().split('')
+
+  for (let i = 0; i < arr.length; i++){
+    for (let j = i + 1; j <= arr.length; j++){
+
+      let sub = arr.slice(i, j).join('')
+
+      if (
+        sub.length > 1 &&
+        sub[0] !== '0' &&
+        sub === sub.split('').reverse().join('') &&
+        !result.includes(+sub)
+      ){
+        result.push(+sub)
+      }
+    }
+  }
+
+  return result.length ? result.sort((a,b) => a-b) : 'No palindromes found'
+}
