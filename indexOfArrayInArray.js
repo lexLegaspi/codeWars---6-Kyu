@@ -27,3 +27,16 @@
 
 // My Solution:
 
+var searchArray = function (arrayToSearch, query) {
+// TODO your code here
+  if (!arrayToSearch.every(x => Array.isArray(x) && x.length == 2)) throw "Error"
+  if (!Array.isArray(query) || query.length != 2) throw "Error"
+  
+  for (let i = 0; i<arrayToSearch.length; i++){
+    if(query[0] === arrayToSearch[i][0] &&  query[1] == arrayToSearch[i][1]) {
+      return i
+    }
+    
+  }
+  return -1
+}
