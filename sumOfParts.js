@@ -25,3 +25,17 @@
 // Please ask before translating.
 
 // My Solution:
+
+function partsSums(ls) {
+    // your code
+
+  let result = []
+  result.fill(0,0,ls.length)
+  let total = 0
+  result[ls.length] = 0
+    for (let i=ls.length - 1; i>=0; i--){
+      total += ls[i]
+      result[i] = total
+    }
+  return result
+}
