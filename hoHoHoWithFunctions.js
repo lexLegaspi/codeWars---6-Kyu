@@ -11,4 +11,11 @@
 // the "Ho"'s must be separated by a space
 // at the end of the string, there must be an exclamation mark (!), without a space
 
-// My Solution: 
+// My Solution:
+
+function ho(str) {
+  // TODO
+  if (!str) return "Ho!";
+
+  return str.replace("!", " Ho!");
+}
