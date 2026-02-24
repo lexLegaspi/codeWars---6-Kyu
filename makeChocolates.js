@@ -26,3 +26,32 @@
 
 
 // My Solution:
+
+function makeChocolates(small, big, goal) {
+  if (goal % 2 === 1 && big === 0) return -1;
+  
+  let remainingGoal = goal;
+  let bigUsed = 0;
+  
+  while (bigUsed < big && remainingGoal >= 5) {
+    bigUsed++;
+    remainingGoal -= 5;
+  }
+  
+  
+  if (remainingGoal % 2 === 1) {
+    
+    if (bigUsed > 0) {
+      bigUsed--;
+      remainingGoal += 5;
+    } else {
+      return -1; 
+    }
+  }
+  
+  if (remainingGoal <= small * 2 && remainingGoal % 2 === 0) {
+    return remainingGoal / 2; 
+  }
+  
+  return -1;
+}
