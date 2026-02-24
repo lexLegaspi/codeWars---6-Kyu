@@ -1,0 +1,10 @@
+// In this Kata, you will count the number of times the first string occurs in the second.
+
+// solve("zaz","zazapulz") = 4 because they are ZAZapulz, ZAzapulZ, ZazApulZ, zaZApulZ
+// More examples in test cases.
+
+// Good luck!
+
+// Please also try Simple time difference
+
+// My Solution:
