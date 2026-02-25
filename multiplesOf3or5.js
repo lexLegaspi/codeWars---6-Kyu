@@ -9,3 +9,19 @@
 // Courtesy of projecteuler.net (Problem 1)
 
 // My Solution:
+
+function solution(number) {
+  if (number < 0) return 0;
+  let multiples = [];
+  for (let i = 1; i < number; i++) {
+    if (i % 5 == 0 && i % 3 == 0) {
+      multiples.push(i);
+    } else if (i % 5 == 0) {
+      multiples.push(i);
+    } else if (i % 3 == 0) {
+      multiples.push(i);
+    }
+  }
+  console.log(multiples);
+  return multiples.reduce((acc, curr) => acc + curr, 0);
+}
