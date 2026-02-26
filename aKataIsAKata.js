@@ -13,3 +13,14 @@
 // Note that both A presses ranges and segment ranges are inclusive: an A press represented by [100,200] means that the A button is pressed before time 100 (and after time 99) and released after time 200 (but before time 201).
 
 // My Solution:
+
+function howManyAPresses(presses, start, end) {
+    let count = 0
+    
+    for (let i=0;i<presses.length;i++){
+        if(presses[i][1] < start || presses[i][0] > end) continue
+        else if(presses[i][0] <= start && start <= presses[i][1]) count += .5
+        else count++
+    }
+    return count
+}
