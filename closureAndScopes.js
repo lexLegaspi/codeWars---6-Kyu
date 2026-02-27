@@ -8,3 +8,14 @@
 // We already implemented that function, but when we actually run the code, the result doesn't look like what we expected. Can you spot, what's wrong with it? A test fixture is also available
 
 // My Solution:
+function createFunctions(n) {
+  var callbacks = [];
+
+  for (let i=0; i<n; i++) {
+    callbacks.push(function() {
+      return i;
+    });
+  }
+  
+  return callbacks;
+}
