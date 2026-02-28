@@ -45,3 +45,19 @@
 // My solution:
 
 
+function sc(room){
+  let letters = [].concat(...room).filter(x => x !== " ")
+  let answer=room.map(x => x.map(() => ' '))
+  
+  letters = letters.reverse()
+  let limit = Math.ceil(Math.sqrt(letters.length))
+  for (let i=0; i< room.length;i++) {
+    for(let j=0; j<limit;j++){
+        if (letters.length == 0) break
+        answer[i][j] = letters.pop()
+    }
+    
+  }
+  
+  return answer
+}
