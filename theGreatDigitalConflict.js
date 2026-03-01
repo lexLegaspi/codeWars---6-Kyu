@@ -54,3 +54,58 @@
 
 // My Solution:
 
+// return the winner's army as string, 'Draw' or 'Peace'
+function battleCodes(armyLetters, armyNumbers) {
+
+  if (!armyLetters && !armyNumbers) return "Peace";
+  if (!armyLetters) return "Peace";
+  if (!armyNumbers) return "Peace";
+
+  const charToNum = c => c.charCodeAt(0) - 96;
+  const numToChar = n => String.fromCharCode(n + 96);
+
+  let letters = armyLetters.split('');
+  let numbers = armyNumbers.split('').map(Number);
+
+  while (letters.length && numbers.length) {
+
+    let letterPower =
+      charToNum(letters[letters.length - 1]);
+
+    let digitPower = numbers[0];
+
+    digitPower -= letterPower;
+
+    for (let i = 1; i <= 2; i++) {
+
+      let index = letters.length - i;
+
+      if (index < 0) break;
+
+      let newPower =
+        charToNum(letters[index]) - numbers[0];
+
+      if (newPower > 0) {
+        letters[index] = numToChar(newPower);
+      } else {
+        letters[index] = '';
+      }
+    }
+
+    letters = letters.filter(l => l !== '');
+
+    if (digitPower > 0) {
+      numbers[0] = digitPower;
+    } else {
+      numbers.shift();
+    }
+  }
+
+  if (!letters.length && !numbers.length)
+    return "Draw";
+
+  if (letters.length)
+    return letters.join('');
+
+  return numbers.join('');
+}
