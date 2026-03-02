@@ -30,3 +30,23 @@
 // join(arr1,arr2) === [[1,3,5],[2,4,6],[7,8,9]]
 
 // My Solution:
+
+function split(arr){
+  //coding and coding..
+  let joined = []
+  let count = []
+  for(let i = 0 ; i<arr.length; i++) {
+    joined = joined.concat(arr[i])
+    count.push([arr[i].length])
+  }
+  return [joined, count]
+}
+
+function join(arr1,arr2){
+  //coding and coding..
+  let removed = []
+  for (let i = 0; i<arr2.length; i++){
+    removed.push(arr1.splice(0,arr2[i]))
+  }
+  return removed
+}
