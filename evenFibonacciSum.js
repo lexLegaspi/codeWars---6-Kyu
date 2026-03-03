@@ -12,3 +12,15 @@
 
 // My Solution:
 
+function fibonacci(max) {
+    // Your code goes here
+ const result = [];
+  let a = 0;
+  let b = 1;
+
+  while (a < max) {
+    result.push(a);
+    [a, b] = [b, a + b];
+  }
+  return result.filter(x => x%2==0).reduce((acc,curr) => acc + curr,0)
+}
