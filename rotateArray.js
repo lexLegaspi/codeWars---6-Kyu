@@ -30,3 +30,19 @@
 
 // My Solution:
 
+function rotate(data, n) {
+  //Your code here
+  let result = data;
+  let shift = Math.abs(n % data.length);
+  if (n === 0) return data;
+  if (n > 0) {
+    for (let i = 0; i < shift; i++) {
+      result.unshift(result.pop());
+    }
+  } else {
+    for (let i = 0; i < shift; i++) {
+      result.push(result.shift());
+    }
+  }
+  return result;
+}
