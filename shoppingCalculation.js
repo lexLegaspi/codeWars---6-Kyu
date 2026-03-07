@@ -50,3 +50,77 @@
 // Just use -s as plural suffix.
 
 // My Solution:
+
+function shoppingCalculation(input) {
+
+  const customers = {};
+  const products = {};
+  const orders = {};
+
+  for (let line of input) {
+
+    line = line.replace('.', '');
+
+    if (line.includes(' is $')) {
+      const [product, , price] = line.split(' ');
+      products[product] = Number(price.replace('$', ''));
+    }
+
+    else if (line.includes(' has $')) {
+      const [name, , money] = line.split(' ');
+      customers[name] = Number(money.replace('$', ''));
+    }
+
+    else if (line.includes(' buys ')) {
+
+      const [name, , qtyStr, productWord] = line.split(' ');
+      const qty = Number(qtyStr);
+
+      let product = productWord;
+
+      if (!products[product] && product.endsWith('s')) {
+        product = product.slice(0, -1);
+      }
+
+      product = product.charAt(0).toUpperCase() + product.slice(1);
+
+      if (!orders[name]) orders[name] = {};
+
+      orders[name][product] = (orders[name][product] || 0) + qty;
+    }
+  }
+
+  for (const name in orders) {
+    for (const product in orders[name]) {
+
+      const price = products[product];
+      const qty = orders[name][product];
+
+      if (price !== undefined) {
+        customers[name] -= price * qty;
+      }
+    }
+  }
+
+  const result = [];
+
+  for (const name in customers) {
+
+    const list = [];
+
+    if (orders[name]) {
+      for (const product in orders[name]) {
+        const qty = orders[name][product];
+
+        let word = product.toLowerCase();
+        if (qty > 1) word += 's';
+
+        list.push(`${qty} ${word}`);
+      }
+    }
+
+    result.push([name, `$${customers[name]}`, list.join(', ')]);
+  }
+
+  return result;
+}
