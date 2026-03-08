@@ -18,3 +18,15 @@
 // => 'c'
 
 // My Solution:
+
+function addedChar(s1, s2){
+  let arrS1 = s1.split('')
+
+  for (let i = 0; i < s2.length; i++) {
+    const index = arrS1.indexOf(s2[i])
+
+    if (index === -1) return s2[i]
+
+    arrS1.splice(index, 1)
+  }
+}
