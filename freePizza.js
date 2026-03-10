@@ -8,3 +8,14 @@
 
 // My Solution:
 
+function pizzaRewards(customers, minOrders, minPrice) {
+  
+  let eligibleCustomer= []
+  
+  for (let [key, value] of Object.entries(customers)) {
+    let eligibleOrders = customers[key].filter(x => x>=minPrice)
+    
+    if (eligibleOrders.length >= minOrders) eligibleCustomer.push(key)
+  }
+  return eligibleCustomer
+}
