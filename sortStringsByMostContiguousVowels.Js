@@ -10,3 +10,28 @@
 
 // My Solution:
 
+function sortStringsByVowels(strings) {
+  let lowerStrings = strings.map((x) => x.toLowerCase());
+  let vowels = "aeiou";
+  // do magic here
+  for (let i = 0; i < lowerStrings.length; i++) {
+    let count = 0;
+    let longest = 0;
+    for (let j = 0; j < lowerStrings[i].length; j++) {
+      if (vowels.includes(lowerStrings[i][j])) {
+        count++;
+        if (count > longest) longest = count;
+      } else {
+        count = 0;
+      }
+    }
+    strings[i] = longest + strings[i];
+  }
+  return strings
+    .sort((a, b) => parseInt(b) - parseInt(a))
+    .map((x) => {
+      let i = 0;
+      while (!isNaN(x[i])) i++;
+      return x.slice(i);
+    });
+}
