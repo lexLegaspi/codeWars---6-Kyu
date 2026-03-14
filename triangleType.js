@@ -10,7 +10,6 @@
 
 // Three input parameters are sides of given triangle. All input values are non-negative floating point or integer numbers (or both, depending on the language).
 
-
 // Acute
 
 // Right
@@ -27,3 +26,14 @@
 
 // My Solution:
 
+function triangleType(a, b, c) {
+  let sides = [a, b, c].sort((a, b) => a - b);
+  if (sides[0] + sides[1] <= sides[2]) return 0;
+
+  if (Math.pow(sides[0], 2) + Math.pow(sides[1], 2) > Math.pow(sides[2], 2))
+    return 1;
+  if (Math.pow(sides[0], 2) + Math.pow(sides[1], 2) == Math.pow(sides[2], 2))
+    return 2;
+  if (Math.pow(sides[0], 2) + Math.pow(sides[1], 2) < Math.pow(sides[2], 2))
+    return 3;
+}
