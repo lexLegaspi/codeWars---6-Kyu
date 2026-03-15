@@ -4,3 +4,6 @@
 
 // My Solution:
 
+function findNestedMaximum(arr) {
+  return Math.max(...arr.flat(Infinity))
+}
