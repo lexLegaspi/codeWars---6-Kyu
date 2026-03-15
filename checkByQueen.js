@@ -22,3 +22,24 @@
 // Your task is to write a function which will return true if the king is in check, and false if he isn't.
 
 // My Solution:
+
+
+function check(board) {
+
+ let queen = {}
+ let king = {}
+
+ for (let i =0; i<board.length;i++) {
+   for (let j = 0; j<board[i].length; j++) {
+     if(board[i][j] == 'q') [queen.x, queen.y] = [j,i]
+     else if (board[i][j] == 'k') [king.x, king.y] = [j,i]
+     if(queen.x !==undefined && queen.y !==undefined && king.x !==undefined && king.y !==undefined) break
+   }
+ }
+
+ if (king.x == queen.x || king.y == queen.y) return true
+
+ if (Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)) return true
+
+ return false
+}
