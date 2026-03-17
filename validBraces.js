@@ -15,3 +15,25 @@
 // "[({})](]" =>  False
 
 // My Solution:
+
+function validBraces(braces) {
+  //TODO
+  const stack = [];
+  const brace = {
+    ")": "(",
+    "]": "[",
+    "}": "{",
+  };
+
+  for (let char of braces) {
+    if (char === "(" || char === "[" || char === "{") {
+      stack.push(char);
+    } else {
+      if (stack.length === 0 || stack.pop() !== brace[char]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
