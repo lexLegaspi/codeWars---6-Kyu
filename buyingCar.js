@@ -36,3 +36,25 @@
 
 // My Solution:
 
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth){
+  //your code here
+  if (startPriceOld >startPriceNew) return [0, Math.round(startPriceOld - startPriceNew)]
+  let months = 0;
+  let twoMonths = 0;
+  let totalSavings = 0;
+
+  while (startPriceOld + totalSavings < startPriceNew) {
+    months++;
+    twoMonths++;
+
+    if (twoMonths % 2 === 0) percentLossByMonth += 0.5;
+
+    startPriceOld -= startPriceOld * (percentLossByMonth / 100);
+    startPriceNew -= startPriceNew * (percentLossByMonth / 100);
+
+    totalSavings += savingperMonth;
+  }
+
+  return [months, Math.round(startPriceOld + totalSavings - startPriceNew)];
+}
+
