@@ -28,3 +28,61 @@
 // If this is the case, ensure that sentences still start with capital letters. '!' or '?' will not be used.
 
 // My solution:
+
+function acronymBuster(string) {
+  if (string.length < 3) return string;
+
+  const acronymArray = ['KPI', 'EOD', 'TBD', 'WAH', 'IAM', 'OOO', 'NRN', 'CTA', 'SWOT'];
+
+  const acronym = {
+    KPI: 'key performance indicators',
+    EOD: 'the end of the day',
+    TBD: 'to be decided',
+    WAH: 'work at home',
+    IAM: 'in a meeting',
+    OOO: 'out of office',
+    NRN: 'no reply necessary',
+    CTA: 'call to action',
+    SWOT: 'strengths, weaknesses, opportunities and threats',
+  };
+
+  let result = string;
+  let current = '';
+
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+
+    if (char >= 'A' && char <= 'Z') {
+      current += char;
+    } else {
+      if (current.length >= 3) {
+        if (!acronymArray.includes(current)) {
+          return `${current} is an acronym. I do not like acronyms. Please remove them from your email.`;
+        }
+        result = result.replaceAll(current, acronym[current]);
+      }
+      current = '';
+    }
+  }
+
+  if (current.length >= 3) {
+    if (!acronymArray.includes(current)) {
+      return `${current} is an acronym. I do not like acronyms. Please remove them from your email.`;
+    }
+    result = result.replaceAll(current, acronym[current]);
+  }
+
+  let chars = result.split('');
+
+  if (chars.length > 0) {
+    chars[0] = chars[0].toUpperCase();
+  }
+
+  for (let i = 0; i < chars.length; i++) {
+    if (chars[i] === '.' && i + 2 < chars.length) {
+      chars[i + 2] = chars[i + 2].toUpperCase();
+    }
+  }
+
+  return chars.join('');
+}
