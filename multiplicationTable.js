@@ -10,3 +10,17 @@
 // [[1,2,3],[2,4,6],[3,6,9]]
 
 // My Solution:
+
+function multiplicationTable(size) {
+  
+  let result = new Array(size).fill(null).map(() => [])
+  let n = 1
+  for (let i = 0; i<size;i++){
+    for (let j = 0;j<size;j++){
+     result[i].push((i + 1) * (j + 1))
+      
+    }
+  }
+  
+  return result 
+}
