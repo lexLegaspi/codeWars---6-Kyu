@@ -27,3 +27,25 @@
 
 // My Solution:
 
+function epidemic(tm, n, s0, i0, b, a) {
+    // your code
+  let dt = tm / n
+  let S = s0
+  let I = i0
+  let R = 0
+  let maxI = I
+  
+  for (let i = 0; i<n;i++){
+    let newS = S - dt * b * S * I
+    let newI = I + dt * (b * S * I - a * I)
+    let newR = R + dt * a * I
+    S = newS
+    I = newI
+    R = newR
+    maxI = Math.max(maxI , I)
+  }
+  
+  
+  
+  return Math.trunc(maxI)
+}
