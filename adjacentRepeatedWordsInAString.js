@@ -18,3 +18,17 @@
 // My Solution:
 
 
+function countAdjacentPairs(searchString) {
+  if (searchString == '') return 0
+  searchString = searchString.toLowerCase().split(' ')
+  let result = []
+  for (let i = 0;i<searchString.length;i++){
+    if (
+      searchString[i] === searchString[i + 1] &&   // has duplicate next
+      searchString[i] !== searchString[i - 1]      // NOT already part of previous duplicate
+    ) {
+      result.push(searchString[i])
+    }
+  }
+  return result.length
+}
