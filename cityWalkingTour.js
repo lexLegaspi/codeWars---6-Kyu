@@ -21,3 +21,41 @@
 // Attractions have to be visited in the order of the given list. The distance between coordinates is measured in kilometers in the Euclidean system of measures. The tour must start and end on the same day.
 
 // My Solution:
+
+
+function isPossibleToVisitAll(attractions, hotelCoords, startTimeStr, closeTimeStr){
+  let closeTimeInt = closeTimeStr.split(':').map(Number);
+  closeTimeInt[0] = closeTimeInt[0] * 60;
+
+  let startTimeInt = startTimeStr.split(':').map(Number);
+  startTimeInt[0] = startTimeInt[0] * 60;
+
+  let availableTime =
+    closeTimeInt.reduce((a,b) => a + b, 0) -
+    startTimeInt.reduce((a,b) => a + b, 0);
+
+  let timeRequired = 0;
+
+  for (let i = 0; i < attractions.length; i++) {
+
+    if (i == 0 || i == attractions.length - 1) {
+      let dx = hotelCoords.x - attractions[i].x;
+      let dy = hotelCoords.y - attractions[i].y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+
+      timeRequired += distance * 12;
+    }
+
+    if (i > 0) {
+      let dx = attractions[i - 1].x - attractions[i].x;
+      let dy = attractions[i - 1].y - attractions[i].y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+
+      timeRequired += distance * 12;
+    }
+
+    timeRequired += attractions[i].v;
+  }
+
+  return timeRequired <= availableTime;
+}
