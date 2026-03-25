@@ -9,11 +9,11 @@
 //  John Smith -> John
 // If two or more people have a specific first name, but don't share a second name initial, their first name and second name initial will be written out.
 
-//  John Smith -> John S    
+//  John Smith -> John S
 //  John Adams -> John A
 // Finally, if two or more people have a specific first name and last name initial, their full name will be written out.
 
-//  John Smith -> John Smith    
+//  John Smith -> John Smith
 //  John Simms -> John Simms
 // To help tidy up the output, management have also asked that the chat room list should be alphabetised, by the users screen names and should all be in Title Case.
 
@@ -24,3 +24,47 @@
 
 // My Solution:
 
+function generateChatRoomNames(users) {
+  users = users.map((x) => x.toLowerCase().split(" "));
+
+  let unique = [];
+  let sameName = [];
+  let sameInitials = [];
+
+  const formatFirst = ([first]) => first[0].toUpperCase() + first.slice(1);
+
+  const formatInitial = ([first, last]) =>
+    first[0].toUpperCase() + first.slice(1) + " " + last[0].toUpperCase();
+
+  const formatFull = ([first, last]) =>
+    first[0].toUpperCase() +
+    first.slice(1) +
+    " " +
+    last[0].toUpperCase() +
+    last.slice(1);
+
+  for (let i = 0; i < users.length; i++) {
+    const [first, last] = users[i];
+
+    const sameFirst = users.filter((x) => x[0] === first);
+    const sameFirstAndInitial = users.filter(
+      (x) => x[0] === first && x[1][0] === last[0],
+    );
+
+    if (sameFirst.length > 1) {
+      if (sameFirstAndInitial.length > 1) {
+        sameInitials.push(users[i]);
+      } else {
+        sameName.push(users[i]);
+      }
+    } else {
+      unique.push(users[i]);
+    }
+  }
+
+  return [
+    ...unique.map(formatFirst),
+    ...sameName.map(formatInitial),
+    ...sameInitials.map(formatFull),
+  ].sort();
+}
