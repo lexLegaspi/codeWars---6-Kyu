@@ -17,3 +17,22 @@
 // palindrome(1221,"8") => "Not valid" 
 
 // My Solution:
+
+function palindrome(num,s) { 
+  //Code goes here 
+  let result = []
+  if( s < 0 ||(num) < 0 || !Number.isInteger(num) || !Number.isInteger(s)) {
+    return "Not valid" 
+  }
+  if (s == 0) return []
+  let count = 0
+  while(count < s){
+    
+    if(String(num) == String(num).split('').reverse().join('') && num > 10){
+      result.push(num)
+      count++
+    }
+    num++
+  }
+  return result
+}
