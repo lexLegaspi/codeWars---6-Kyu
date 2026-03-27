@@ -26,3 +26,45 @@
 // 'wytotear hihstwlt eseshhkh natieoee nrrpphdm ooeaeau  buebovn  onsoped  ddgulwe ' 
 
 // my Solution:
+
+
+function cipherText(plainText) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  plainText = plainText.toLowerCase().split('').filter(x => alphabet.includes(x))
+  if (plainText.length == 0) return ''
+  console.log(plainText)
+  
+  let a = 1
+  let b = 1
+  
+  while (a * b < plainText.length) {
+    b++
+    if (a * b < plainText.length) {
+      a++
+    }
+  }
+  
+  let result = []
+  
+  for (let i = 0; i < a; i++) {
+    let arr = new Array(b).fill(' ')
+    for (let j = 0; j < b; j++) {
+      let char = plainText.shift()
+      if (char) {
+        arr[j] = char
+      }
+    }
+    result.push(arr)
+  }
+  
+  let final = ''
+  
+  for (let i = 0; i < b; i++) {
+    for (let j = 0; j < a; j++) {
+      final += result[j][i]
+      }
+    final += ' '
+    }
+  
+  return final.slice(0, -1)
+}
