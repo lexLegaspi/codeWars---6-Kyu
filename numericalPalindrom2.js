@@ -13,7 +13,33 @@
 // palindrome(5) => false
 // palindrome(1221) => true
 // palindrome(141221001) => true
-// palindrome(1215) => true 
-// palindrome(1294) => false 
+// palindrome(1215) => true
+// palindrome(1294) => false
 // palindrome("109982") => "Not valid"
 // My Solution:
+
+function palindrome(num) {
+  //Code goes here
+  if (!Number.isInteger(num) || num < 0) return "Not valid";
+
+  const str = String(num);
+
+  let left = 0;
+
+  while (left < str.length) {
+    let right = left + 1;
+    while (right < str.length) {
+      const sub = str.slice(left, right + 1);
+
+      if (sub === sub.split("").reverse().join("")) {
+        return true;
+      }
+
+      right++;
+    }
+
+    left++;
+  }
+
+  return false;
+}
