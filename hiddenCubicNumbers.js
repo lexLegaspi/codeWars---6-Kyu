@@ -31,3 +31,34 @@
 // e.g "0785" becomes 2 strings comprising "078" and "5".
 
 // My Solution:
+
+function isSumOfCubes(s){
+  // ...
+  let numbers = []
+  let cubic = []
+  let current = ''
+  for (let i = 0; i<s.length; i++){
+    if(Number.isInteger(parseInt(s[i]))) {
+      current += s[i]
+    }else{
+      if(current !== ''){
+        numbers.push(parseInt(current))
+        current = ''
+      }
+    }
+    if(current.length == 3){
+      numbers.push(parseInt(current))
+      current = ''
+    }
+  }
+  if (current.length != 0) numbers.push(parseInt(current))
+  numbers = numbers.map(String)
+  
+  
+  for(let i=0;i<numbers.length;i++){
+    if (numbers[i] == [...numbers[i].split('').map(Number)].reduce((a,b) => a + Math.pow(b, 3), 0)){
+      cubic.push(numbers[i])
+    }
+  }
+  return cubic.length == 0? "Unlucky": cubic.join(' ') + ' ' + cubic.map(Number).reduce((a,b) => a + b,0) + ' ' + 'Lucky'
+}
