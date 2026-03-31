@@ -30,3 +30,59 @@
 // R language: Don't use R's base function "mean()" that could give results slightly different from expected ones.
 
 // My Solution:
+
+function balance(book) {
+  let lines = book.split("\n");
+  let temp = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    let clean = "";
+
+    for (let j = 0; j < lines[i].length; j++) {
+      const ch = lines[i][j];
+      const code = ch.charCodeAt(0);
+
+      if (
+        (code >= 48 && code <= 57) || 
+        (code >= 65 && code <= 90) || 
+        (code >= 97 && code <= 122) || 
+        ch === ' ' ||
+        ch === '.'
+      ) {
+        clean += ch;
+      }
+    }
+
+    if (clean.trim() !== "") {
+      temp.push(clean.trim());
+    }
+  }
+
+  let result = [];
+  let balance = parseFloat(temp[0]);
+  let sum = 0;
+  let count = 0;
+
+  result.push(`Original Balance: ${balance.toFixed(2)}\r\n`);
+
+  for (let i = 1; i < temp.length; i++) {
+    let parts = temp[i].split(" ");
+
+    let id = parts[0];
+    let name = parts[1];
+    let amount = parseFloat(parts[2]);
+
+    balance -= amount;
+    sum += amount;
+    count++;
+
+    result.push(
+      `${id} ${name} ${amount.toFixed(2)} Balance ${balance.toFixed(2)}\r\n`
+    );
+  }
+
+  result.push(`Total expense  ${sum.toFixed(2)}\r\n`);
+  result.push(`Average expense  ${(sum / count).toFixed(2)}`);
+
+  return result.join('');
+}
