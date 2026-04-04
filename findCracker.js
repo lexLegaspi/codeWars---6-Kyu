@@ -28,3 +28,39 @@
 // return ["name1", "name3"];
 
 // My Solution:
+
+function findHack(arr) {
+  arr = arr.map((x) => x.flat());
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let totalPoint = 0;
+    let bCounter = 0;
+
+    for (let j = 2; j < arr[i].length; j++) {
+      if (arr[i][j] === "A") {
+        bCounter++;
+        totalPoint += 30;
+      } else if (arr[i][j] === "B") {
+        bCounter++;
+        totalPoint += 20;
+      } else if (arr[i][j] === "C") {
+        totalPoint += 10;
+      } else if (arr[i][j] === "D") {
+        totalPoint += 5;
+      }
+    }
+
+    if (bCounter === arr[i].slice(2).length) {
+      totalPoint += 20;
+    }
+
+    totalPoint = Math.min(totalPoint, 200);
+
+    if (arr[i][1] > 200 || arr[i][1] !== totalPoint) {
+      result.push(arr[i][0]);
+    }
+  }
+
+  return result;
+}
