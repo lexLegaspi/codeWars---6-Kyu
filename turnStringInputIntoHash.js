@@ -7,3 +7,14 @@
 
 // My Solution:
 
+function strToHash(str){
+  // ...
+  if(!str) return {}
+  str = str.split(', ').map(x => x.split('='))
+  let hash = {}
+  
+  for (el of str){
+    hash[el[0]] = +el[1]
+  }
+  return hash
+}
