@@ -24,3 +24,12 @@
 
 //       My Solution:
 
+function prefill(n, v) { 
+  if(n===0 || n==='0') return []
+  if(!Number.isInteger(n) || n === Infinity || n < 0) throw new TypeError(`${n} is invalid`);
+
+  let arr = new Array(n)
+  arr.fill(v)
+  
+  return arr
+}
