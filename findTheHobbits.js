@@ -6,3 +6,17 @@
 
 // My Solution:
 
+function findHobbitsIn(manifest){
+  let keywords = [
+    'halfling','hobbit','shire','farthing','hobbiton'
+  ];
+
+  return manifest.filter(x => {
+    const race = (x.race || '').toLowerCase();
+    const home = (x.home || '').toLowerCase();
+
+    return keywords.some(k =>
+      race.includes(k) || home.includes(k)
+    );
+  });
+}
