@@ -8,3 +8,18 @@
 
 // My Solution:
 
+function sortArray(array) {
+  let temp = [];
+  // Return a sorted array.
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 !== 0) {
+      temp.push(array[i]);
+      array[i] = null;
+    }
+  }
+  temp.sort((a, b) => a - b);
+  for (let j = 0; j < temp.length; j++) {
+    array[array.indexOf(null)] = temp[j];
+  }
+  return array;
+}
