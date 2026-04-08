@@ -15,3 +15,29 @@
 // (Adapted from https://codegolf.stackexchange.com/questions/158132/no-a-just-caps-lock)
 
 // My Solutiton:
+
+var fatFingers = function(str) {
+  if (str == null || str == '' || str == undefined) return str
+ let capsToggle = false
+  let result = ''
+  str = str.split('')
+  for (let char of str) {
+    if (char === 'a' || char === 'A') {
+      capsToggle = !capsToggle
+    } else {
+      if (!capsToggle) {
+        result += char
+      } else {
+        if (char >= 'a' && char <= 'z') {
+          result += char.toUpperCase()
+        } else if (char >= 'A' && char <= 'Z') {
+          result += char.toLowerCase()
+        } else {
+          result += char
+        }
+      }
+    }
+  }
+
+  return result
+} 
