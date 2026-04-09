@@ -18,3 +18,21 @@
 
 // My Solution:
 
+function findDiscounted(prices) {
+  let temp = prices.split(' ').map(Number)
+  let result = []
+  
+  for (let i = 0; i < temp.length; i++) {
+    if (temp[i] === null) continue  
+    
+    let original = temp[i] * (4 / 3)
+    let index = temp.indexOf(original, i + 1)
+    
+    if (index !== -1) {
+      result.push(temp[i])
+      temp[index] = null
+    }
+  }
+  
+  return result.join(' ')
+}
