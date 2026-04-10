@@ -34,3 +34,10 @@
 // Hurry up, save your clan!
 
 // My Solution:
+
+function calculateBmi(weight, height) {
+  height = height/100
+  let bmi = (weight/(height * height))
+  let result = DATA.filter(x => bmi >= x[0] && bmi <= x[1])
+  return {value: String(bmi.toFixed(1)), category: result[0][2]}
+}
