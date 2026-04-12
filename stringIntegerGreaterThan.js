@@ -10,7 +10,7 @@ function stringIntGreaterThan(a, b) {
   return (+a>+b)
 }
 
- ############################  OR  ##############################
+//  ############################  OR  ##############################
 
 
 function stringIntGreaterThan(a, b) {
