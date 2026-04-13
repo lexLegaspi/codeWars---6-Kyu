@@ -17,3 +17,30 @@
 // P.S. You work with lowercase letters only.
 
 // My Solution:
+
+function replaceLetters(word) {
+  // good luck
+  let vowels = 'aeiou'
+  let result = ''
+  
+  for (let i=0;i<word.length;i++){
+    let current = word[i]
+    if (vowels.includes(word[i])){
+      switch(current){
+        case 'a': result+= 'z';break;
+        case 'e': result+= 'd';break;
+        case 'i': result+= 'h';break;
+        case 'o': result+= 'n';break;
+        case 'u': result+= 't';break;
+      }
+    }else if(current == 'z') {
+      result+= 'a'
+    }else {
+      do {
+        current = String.fromCharCode(current.charCodeAt(0) + 1);
+      } while(!vowels.includes(current))
+        result += current;
+    }
+  }
+  return result
+}
