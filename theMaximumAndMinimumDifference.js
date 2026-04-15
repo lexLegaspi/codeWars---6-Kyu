@@ -19,35 +19,18 @@
 // My Solution:
 
 
-function maxAndMin(arr1,arr2){
-  //coding and coding..
-  let a,b
-   
-  if(arr1.length > arr2.length) {
-    a = arr1
-    b = arr2
-  } else {
-    a = arr2;  
-    b = arr1
-  }
-  let current = 0
-  let min = null
-  let max = null
-  for (let i = 0;i<a.length; i++){
-    for (let j = 0; j<b.length; j++){
-      current = Math.abs(a[i] - b[j])
-      if(min == null) {
-        min = current
-        max = current
-      } else {
-       if(current < min) {
-         min = current
-       }else if(current> max){
-         max = current
-       }
-      }
+function maxAndMin(arr1, arr2) {
+  let min = Infinity
+  let max = -Infinity
+
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      const diff = Math.abs(arr1[i] - arr2[j])
+
+      if (diff < min) min = diff
+      if (diff > max) max = diff
     }
   }
-  
-  return [max,min]
+
+  return [max, min]
 }
