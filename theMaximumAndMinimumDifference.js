@@ -17,3 +17,37 @@
 // maxAndMin([1,2,3,4,5],[6,7,8,9,10]) === [9,1]
 
 // My Solution:
+
+
+function maxAndMin(arr1,arr2){
+  //coding and coding..
+  let a,b
+   
+  if(arr1.length > arr2.length) {
+    a = arr1
+    b = arr2
+  } else {
+    a = arr2;  
+    b = arr1
+  }
+  let current = 0
+  let min = null
+  let max = null
+  for (let i = 0;i<a.length; i++){
+    for (let j = 0; j<b.length; j++){
+      current = Math.abs(a[i] - b[j])
+      if(min == null) {
+        min = current
+        max = current
+      } else {
+       if(current < min) {
+         min = current
+       }else if(current> max){
+         max = current
+       }
+      }
+    }
+  }
+  
+  return [max,min]
+}
