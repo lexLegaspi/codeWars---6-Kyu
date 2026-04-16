@@ -18,3 +18,17 @@
 // This is given in the initial solution.
 
 // My Solution:
+
+
+function cake(ingredients, avail){
+  var recipe = {'caster sugar': 160, 'butter': 170, 'eggs': 3, 'self-raising flour': 115, 'cocoa powder': 55};
+ //Your solution
+  let percent = avail/recipe[ingredients]
+  return {
+    'caster sugar'      : `${+(recipe['caster sugar'] * percent).toFixed(1)}g`,
+    butter              : `${+(recipe.butter * percent).toFixed(1)}g`,
+    eggs                : +(recipe.eggs * percent).toFixed(1),
+    'self-raising flour': `${+(recipe['self-raising flour'] * percent).toFixed(1)}g`,
+    'cocoa powder'      : `${+(recipe['cocoa powder'] * percent).toFixed(1)}g`,
+  }
+}
