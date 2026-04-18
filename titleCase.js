@@ -15,3 +15,20 @@
 
 
 // My Solution:
+
+function titleCase(title, minorWords) {
+    if(!title) return ''
+    title = title.toLowerCase().split(' ')
+    if(minorWords) {
+      minorWords = minorWords.toLowerCase().split(' ')
+    }else {
+      minorWords = []
+    }
+  
+  return title.map((x, i) => {
+    if (i == 0 || !minorWords.includes(x)){
+      return x[0].toUpperCase() + x.slice(1)
+    }
+    return x
+  }).join(' ')
+}
