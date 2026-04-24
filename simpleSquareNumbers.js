@@ -5,7 +5,21 @@
 
 // solve(3) = 1 // 3 + 1 = 4, a perfect square
 // solve(12) = 4 // 12 + 4 = 16, a perfect square
-// solve(9) = 16 
+// solve(9) = 16
 // solve(4) = -1
 
 // My Solution:
+
+function solve(n) {
+  if (n % 2 === 0 && n % 4 !== 0) return -1;
+  if (n <= 4 && n != 3) return -1;
+  let i = 1;
+
+  while (true) {
+    if (Number.isInteger(Math.sqrt(i * i + n))) {
+      return i * i;
+    }
+
+    i++;
+  }
+}
