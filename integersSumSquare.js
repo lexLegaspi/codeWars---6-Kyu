@@ -7,3 +7,18 @@
 
 // My Solution:
 
+const intSumSq = (n, m) => {
+  const root = Math.sqrt(m);
+  if (!Number.isInteger(root)) return "No result";
+
+  let arr = [];
+  for (let i = 1; i < n; i++) {
+    const sum = String(i)
+      .split("")
+      .reduce((a, b) => a + Number(b), 0);
+
+    if (sum === root) arr.push(i);
+  }
+
+  return arr.length ? arr : "No result";
+};
