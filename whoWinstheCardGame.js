@@ -27,8 +27,54 @@
 //   "Sam" : "3, 10",
 // };
 
-// whoWins(players, 3, ["Ben", "Amy"]) 
+// whoWins(players, 3, ["Ben", "Amy"])
 // //should return [["Sam", 13], ["Amy", 10], ["Ben", 10]];
 
-
 // My Solution:
+
+function whoWon(players, extraCard, extraTakers) {
+  //write your code here
+  let result = [];
+  let bustArr = [];
+  for (const [key, value] of Object.entries(players)) {
+    let score = value
+      .split(", ")
+      .map((x) => {
+        if ("AJQK".includes(x)) {
+          return 10;
+        } else {
+          return Number(x);
+        }
+      })
+      .reduce((a, b) => a + b, 0);
+
+    if (extraTakers.includes(key)) {
+      if ("AJQK".includes(extraCard)) {
+        score += 10;
+      } else {
+        score += extraCard;
+      }
+    }
+    if (score > 21) {
+      bustArr.push([key, score]);
+    } else {
+      result.push([key, score]);
+    }
+  }
+
+  result = result.sort((a, b) => {
+    if (b[1] !== a[1]) {
+      return b[1] - a[1];
+    }
+    return a[0].localeCompare(b[0]);
+  });
+
+  bustArr = bustArr.sort((a, b) => {
+    if (b[1] !== a[1]) {
+      return a[1] - b[1];
+    }
+    return a[0].localeCompare(b[0]);
+  });
+
+  return result.concat(bustArr);
+}
