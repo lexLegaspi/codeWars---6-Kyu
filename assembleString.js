@@ -15,7 +15,6 @@
 // ]
 // result = "abcde"
 
-
 // input = [
 //   "a*c**",
 //   "**cd*",
@@ -24,3 +23,22 @@
 // result = "a#cd#"
 
 // My Solution:
+
+function assembleString(array) {
+  if (array.length == 0) return "";
+  let result = "";
+
+  for (let i = 0; i < array[0].length; i++) {
+    let current = result;
+    for (let j = 0; j < array.length; j++) {
+      if (array[j][i] !== "*") {
+        current += array[j][i];
+        break;
+      }
+    }
+    if (current == result) {
+      result += "#";
+    } else result = current;
+  }
+  return result;
+}
