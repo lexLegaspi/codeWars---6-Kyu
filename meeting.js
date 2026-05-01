@@ -16,3 +16,15 @@
 // You can see another examples in the "Sample tests".
 
 // My Solution:
+
+function meeting(s) {
+  // your code
+  s = s
+    .split(";")
+    .map((x) => x.toUpperCase().split(":"))
+    .sort((a, b) => {
+      return a[1].localeCompare(b[1]) || a[0].localeCompare(b[0]);
+    });
+
+  return s.map((x) => `(${x[1]}, ${x[0]})`).join("");
+}
