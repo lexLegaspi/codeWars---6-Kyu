@@ -22,3 +22,24 @@
 
 // My Solution:
 
+function reverse_and_combine_text(str) {
+  let arr = str.split(" ");
+
+  while (arr.length > 1) {
+    arr = arr.map((x) => x.split("").reverse().join(""));
+
+    let temp = [];
+
+    for (let i = 0; i < arr.length; i += 2) {
+      if (i + 1 < arr.length) {
+        temp.push(arr[i] + arr[i + 1]);
+      } else {
+        temp.push(arr[i]);
+      }
+    }
+
+    arr = temp;
+  }
+
+  return arr[0]; //aa
+}
