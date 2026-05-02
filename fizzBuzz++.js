@@ -23,3 +23,22 @@
 
 // My Solution:
 
+function fizzbuzzPlusPlus(numbers, words) {
+  let max = numbers.reduce((a, b) => a * b, 1);
+  let result = [];
+  for (let i = 1; i <= max; i++) {
+    let str = "";
+    for (let j = 0; j < numbers.length; j++) {
+      if (i % numbers[j] == 0) {
+        str += words[j];
+      }
+    }
+
+    if (str == "") {
+      result.push(i);
+    } else {
+      result.push(str);
+    }
+  }
+  return result;
+}
